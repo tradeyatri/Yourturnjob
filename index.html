@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASS IT - Job Sharing Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .job-listings {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .job {
+            background: #e3e3e3;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to PASS IT</h1>
+        <p>A community-driven job-sharing portal where employees share job opportunities.</p>
+        
+        <h2>Share a Job Opportunity</h2>
+        <form id="jobForm">
+            <input type="text" id="jobTitle" placeholder="Job Title" required>
+            <input type="text" id="company" placeholder="Company Name" required>
+            <textarea id="jobDetails" placeholder="Job Details" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <h2>Latest Job Listings</h2>
+        <div class="job-listings" id="jobList">
+            <!-- Jobs will be listed here -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("jobForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let title = document.getElementById("jobTitle").value;
+            let company = document.getElementById("company").value;
+            let details = document.getElementById("jobDetails").value;
+            
+            let jobEntry = `<div class="job"><h3>${title}</h3><p><strong>${company}</strong></p><p>${details}</p></div>`;
+            document.getElementById("jobList").innerHTML += jobEntry;
+            
+            document.getElementById("jobForm").reset();
+        });
+    </script>
+</body>
+</html>
